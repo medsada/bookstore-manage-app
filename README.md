@@ -1,2 +1,1 @@
-# bookstore-manage-app
-ReactJS app for management of bookstore
+Project Site : https://manage-lib-application.netlify.app/

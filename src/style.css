@@ -1,0 +1,67 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #ffffff;
+  font-family: "Montserrat", "Open sans", sans-serif;
+  font-weight: 500;
+  color: #101113;
+  font-size: 14px;
+}
+#root {
+  height: 100%;
+  position: relative;
+}
+.container-md {
+  background: #f0f4fa;
+}
+.navlink {
+  color: aliceblue;
+}
+.fixednav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+.containNumber {
+  background-color: rgba(95, 194, 120, 0.3);
+  border-color: chartreuse;
+  border-radius: 5px;
+  position: absolute;
+  right: 30px;
+  bottom: 23%;
+  color: rgb(5, 173, 5);
+  padding: 4px;
+}
+.line {
+  margin: auto;
+  width: auto;
+  max-width: 500px;
+  height: 2px;
+  background-color: rgb(45, 105, 45);
+}
+.card:hover {
+  background: #fffedb;
+}
+.bordered {
+  border-width: 2px;
+  border-style: solid;
+  border-color: hsl(224, 70%, 36%);
+  border-radius: 5px;
+}
+.items {
+  justify-content: center;
+}
+.flexitems {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.brand-size {
+  font-size: 20px;
+}
