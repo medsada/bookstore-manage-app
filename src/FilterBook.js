@@ -11,7 +11,6 @@ function FilterBook({ allCategory, handleFilter }) {
     <div className="items filt my-1">
       <strong> Filtrez par catégorie : </strong>
       {allCategory.map((ca, index) => {
-        console.log(index);
         return (
           <button
             key={index}

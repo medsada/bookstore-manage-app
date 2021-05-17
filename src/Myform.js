@@ -1,16 +1,31 @@
 import React, { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
 
-function Myform({ Category, closeForm, submitHandle, dataImputs }) {
+function Myform({
+  Category,
+  submitHandle,
+  isAdd = true,
+  dataImputs = {
+    category: "",
+    autor: "",
+    price: 0,
+    stock: 0,
+    title: "",
+    description: "",
+  },
+}) {
   const [newCategory, setNewCategory] = useState(false);
   const [imputs, setImputs] = useState(dataImputs);
   const [require, setRequire] = useState(true);
+  const history = useHistory();
 
   useEffect(() => {
     if (
       imputs.title !== "" &&
+      imputs.autor !== "" &&
       imputs.description !== "" &&
       imputs.category !== "" &&
-      imputs.price !== 0
+      imputs.price > 0
     ) {
       setRequire(false);
     } else {
@@ -38,13 +53,25 @@ function Myform({ Category, closeForm, submitHandle, dataImputs }) {
     setNewCategory(e.target.checked);
   };
 
+  const submiting = () => {
+    submitHandle(imputs, isAdd);
+    history.push("/");
+  };
+
   return (
     <div className="bordered my-3 p-2">
       <form className="m-2">
-        <div>
-          <h3>
-            Formulaire : <span></span>
-          </h3>
+        <div className="d-flex flex-wrap">
+          <h3>Formulaire :</h3>{" "}
+          <div className="d-flex flex-fill justify-content-center">
+            <h4
+              className={`rounded-pill border border-2 p-2 px-3 ${
+                isAdd ? "border-primary text-primary" : "border-info text-info"
+              }`}
+            >
+              {isAdd ? "Ajouter un nouveau livre" : "Modifiez votre livre"}
+            </h4>
+          </div>
         </div>
         <div class="form-row my-3">
           <div className="form-group m-3 col-md-4">
@@ -165,14 +192,14 @@ function Myform({ Category, closeForm, submitHandle, dataImputs }) {
         <button
           type="submit"
           class=" mr-2 btn btn-primary"
-          onClick={() => submitHandle(imputs)}
+          onClick={() => submiting()}
           disabled={require}
         >
           Valider
         </button>
-        <button className="btn btn-danger" onClick={closeForm}>
+        <Link className="btn btn-danger" to="/">
           Annuler
-        </button>
+        </Link>
       </form>
     </div>
   );

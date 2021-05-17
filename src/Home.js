@@ -1,48 +1,28 @@
 import React from "react";
 import ListBook from "./ListBook";
 import FilterBook from "./FilterBook";
-import Myform from "./Myform";
+import { Link } from "react-router-dom";
 
 function Home({
-  imputBook,
   allCategory,
   handleFilter,
   books,
   handleDelete,
-  handleEdit,
   handleMinusStock,
   handlePlusStock,
-  showForm,
-  isAdd,
-  openNewForm,
-  closeForm,
-  submitHandle,
 }) {
   return (
     <>
-      {!showForm && (
-        <div>
-          <button
-            className="card-link btn btn-primary my-2"
-            onClick={openNewForm}
-          >
-            Ajouter un nouveau livre
-          </button>
-        </div>
-      )}
-      {showForm && (
-        <Myform
-          Category={allCategory}
-          closeForm={closeForm}
-          submitHandle={submitHandle}
-          dataImputs={imputBook}
-        />
-      )}
+      <div>
+        <Link className="card-link btn btn-primary my-2" to="/PageForm/new">
+          Ajouter un nouveau livre
+        </Link>
+      </div>
+
       <FilterBook allCategory={allCategory} handleFilter={handleFilter} />
       <ListBook
         books={books}
         handleDelete={handleDelete}
-        handleEdit={handleEdit}
         handleMinusStock={handleMinusStock}
         handlePlusStock={handlePlusStock}
       />

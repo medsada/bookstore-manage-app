@@ -1,12 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-function ListBook({
-  books,
-  handleDelete,
-  handleEdit,
-  handleMinusStock,
-  handlePlusStock,
-}) {
+function ListBook({ books, handleDelete, handleMinusStock, handlePlusStock }) {
   return (
     <div className="bordered p-2">
       <h3 className="h3 m-2 pl-5" style={{ color: "rgb(127, 59, 127)" }}>
@@ -59,13 +54,13 @@ function ListBook({
                     >
                       Détails
                     </button>
-                    <button
+                    <Link
                       type="button"
                       className="card-link btn btn-info m-1"
-                      onClick={() => handleEdit(id)}
+                      to={`/PageForm/${id}`}
                     >
                       Modifier
-                    </button>
+                    </Link>
                   </div>
                   <button
                     type="button"
