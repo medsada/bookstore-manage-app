@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 
 function Myform({
-  Category,
-  submitHandle,
+  categories,
   isAdd = true,
   dataImputs = {
     category: "",
@@ -14,6 +14,7 @@ function Myform({
     description: "",
   },
 }) {
+  const dispatch = useDispatch();
   const [newCategory, setNewCategory] = useState(false);
   const [imputs, setImputs] = useState(dataImputs);
   const [require, setRequire] = useState(true);
@@ -54,7 +55,12 @@ function Myform({
   };
 
   const submiting = () => {
-    submitHandle(imputs, isAdd);
+    if (isAdd) {
+      const newBook = { id: new Date().getTime().toString(), ...imputs };
+      dispatch({ type: "ADD_BOOK", payload: newBook });
+    } else {
+      dispatch({ type: "EDIT_BOOK", payload: imputs });
+    }
     history.push("/");
   };
 
@@ -161,19 +167,21 @@ function Myform({
                 onChange={handleChange}
               >
                 <option>Choisir ...</option>
-                {Category.filter((ca) => {
-                  return "toutes" !== ca;
-                }).map((ca, index) => {
-                  return (
-                    <option
-                      key={index}
-                      value={ca}
-                      selected={ca === imputs.category}
-                    >
-                      {ca}
-                    </option>
-                  );
-                })}
+                {categories
+                  .filter((ca) => {
+                    return "toutes" !== ca;
+                  })
+                  .map((ca, index) => {
+                    return (
+                      <option
+                        key={index}
+                        value={ca}
+                        selected={ca === imputs.category}
+                      >
+                        {ca}
+                      </option>
+                    );
+                  })}
               </select>
             </div>
           )}

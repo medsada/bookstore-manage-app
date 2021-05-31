@@ -7,8 +7,17 @@ function About() {
       <h2>A propos de l'application :</h2>
       <p>
         Cette application est conçu pour appliqué les connaissances Fontend
-        basées sur <strong>ReactJS</strong> et <strong>Bootstrap</strong>, c'est
-        une sorte de logiciel de gestion de stocks des livres pour librairie.
+        basées sur <strong>ReactJS</strong> et <strong>Redux</strong> et{" "}
+        <strong>Bootstrap</strong>, c'est une sorte de logiciel de gestion de
+        stocks des livres pour librairie.
+        <br /> Retrouvez son code source sur
+        <a
+          href="https://github.com/medsada/bookstore-manage-app/"
+          target="blank_tab"
+        >
+          {" "}
+          Github.
+        </a>
       </p>
       <br />
       <h3>Features de l'application :</h3>
@@ -39,11 +48,11 @@ function About() {
       <br />
       <h3>Techno utilisé dans ce projet :</h3>
       <p>
-        ReactJS : Props, UseState, UseEffect, props chiling, conditional
-        rendering, controlled inputs, handle submit form, React Router,
-        conditional Styling <br /> Design : CSS (Flexbox, Position, Color),
-        Bootstrap (Grid, Cards, Navbar, Responsive, container, Form, Button,
-        Imput, Utilities)
+        ReactJS : Redux, Pure component memo, Props, UseState, UseEffect, props
+        chiling, conditional rendering, controlled inputs, handle submit form,
+        React Router, conditional Styling <br /> Design : CSS (Flexbox,
+        Position, Color), Bootstrap (Grid, Cards, Navbar, Responsive, container,
+        Form, Button, Utilities, Pagination, Modal)
       </p>
       <hr />
       <footer>

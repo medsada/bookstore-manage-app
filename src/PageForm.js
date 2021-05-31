@@ -1,25 +1,22 @@
 import { useParams } from "react-router-dom";
 import Myform from "./Myform";
+import { useSelector } from "react-redux";
 
-const PageForm = ({ books, allCategory, submitHandle }) => {
+const PageForm = () => {
+  const books = useSelector((state) => state.books.books);
+  const allCategory = [
+    "toutes",
+    ...new Set(books.map((item) => item.category)),
+  ];
   const { id } = useParams();
   console.log(id);
   if (id === "new") {
-    return (
-      <Myform isAdd={true} Category={allCategory} submitHandle={submitHandle} />
-    );
+    return <Myform isAdd={true} categories={allCategory} />;
   }
-  let input = books.filter((book) => {
+  let input = books.find((book) => {
     return book.id == id;
-  })[0];
-  return (
-    <Myform
-      isAdd={false}
-      Category={allCategory}
-      submitHandle={submitHandle}
-      dataImputs={input}
-    />
-  );
+  });
+  return <Myform isAdd={false} categories={allCategory} dataImputs={input} />;
 };
 
 export default PageForm;

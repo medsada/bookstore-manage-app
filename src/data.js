@@ -122,7 +122,7 @@ const data = [
   {
     id: 13,
     category: "Autre",
-    autor: "",
+    autor: "Chadli",
     price: 600,
     stock: 10,
     title: "Mémoire du président Chaadli",

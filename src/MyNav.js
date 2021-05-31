@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function MyNav({ books }) {
+function MyNav({ length }) {
   return (
     <nav className="navbar navbar-expand navbar-dark bg-dark fixednav">
       <NavLink className="btn navlink brand-size" to="/">
@@ -13,7 +13,7 @@ function MyNav({ books }) {
       </NavLink>
       <div className="containNumber">
         <span className="numberTask">
-          <strong>{books.length} Livres</strong>
+          <strong>{length} Livres</strong>
         </span>
       </div>
     </nav>

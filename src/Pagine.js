@@ -1,35 +1,34 @@
 import React from "react";
 
-const Pagine = () => {
+const Pagine = ({ indexing, index, length, numShow }) => {
   return (
-    <div>
+    <div className="mt-4 ml-4">
       <nav aria-label="Page navigation example">
-        <ul class="pagination">
-          <li class="page-item">
-            <a class="page-link" href="#">
-              Previous
-            </a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="#">
-              1
-            </a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="#">
-              2
-            </a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="#">
-              3
-            </a>
-          </li>
-          <li class="page-item">
-            <a class="page-link" href="#">
-              Next
-            </a>
-          </li>
+        <ul className="pagination pagination-lg">
+          {index === 0 || (
+            <li className="page-item">
+              <button className="page-link" onClick={() => indexing(index - 1)}>
+                Precedent
+              </button>
+            </li>
+          )}
+
+          {[...Array(length)].map((o, i) => {
+            return (
+              <li key={i} className={`page-item  ${index === i && "active"}`}>
+                <button className="page-link" onClick={() => indexing(i)}>
+                  {i + 1}
+                </button>
+              </li>
+            );
+          })}
+          {index === length - 1 || (
+            <li className="page-item">
+              <button className="page-link" onClick={() => indexing(index + 1)}>
+                Suivant
+              </button>
+            </li>
+          )}
         </ul>
       </nav>
     </div>

@@ -1,11 +1,16 @@
 import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
-function FilterBook({ allCategory, handleFilter }) {
-  const [activeValue, setActiveValue] = useState(0);
-  console.log(activeValue);
-  const handle = (ca, index) => {
-    setActiveValue(index);
-    handleFilter(ca);
+function FilterBook() {
+  const activeValue = useSelector((state) => state.category.category);
+  const books = useSelector((state) => state.books.books);
+  const allCategory = [
+    "toutes",
+    ...new Set(books.map((item) => item.category)),
+  ];
+  const dispatch = useDispatch();
+  const handle = (ca) => {
+    dispatch({ type: "SET_CATEGORY", payload: ca });
   };
   return (
     <div className="items filt my-1">
@@ -16,9 +21,9 @@ function FilterBook({ allCategory, handleFilter }) {
             key={index}
             type="button"
             className={`btn btn-dark card-link m-1  ${
-              index === activeValue && "isactiveted"
+              ca === activeValue && "isactiveted"
             }`}
-            onClick={() => handle(ca, index)}
+            onClick={() => handle(ca)}
           >
             {ca}
           </button>
