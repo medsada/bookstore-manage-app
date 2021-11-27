@@ -15,7 +15,7 @@ const ModalDetail = ({
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
-            <h4 className="modal-title">title</h4>
+            <h4 className="modal-title">{title}</h4>
             <button
               type="button"
               className="close"
@@ -40,7 +40,7 @@ const ModalDetail = ({
               className="btn btn-danger"
               onClick={() => closeModel()}
             >
-              Close
+              Fermer
             </button>
           </div>
         </div>
